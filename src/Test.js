@@ -1,5 +1,3 @@
-import logo from './logo.svg';
-import './App.css';
 import { useSelector, useDispatch } from 'react-redux';
 import * as selectors from './selectors';
 import { updateCounter } from './actions/actions';
