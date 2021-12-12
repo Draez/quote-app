@@ -1,5 +1,5 @@
 import { actionTypes } from '../actions/actions';
-const initialState = { count: 0, quotes: [], quoteLoading: false };
+const initialState = { inputCount: 1, quotes: [], filteredQuotes: [], quoteLoading: false, };
 
 // STATE
 // quotes []
@@ -14,11 +14,6 @@ const initialState = { count: 0, quotes: [], quoteLoading: false };
 
 function reducer(state = initialState, action) {
     switch (action.type) {
-        case actionTypes.UPDATE_COUNTER:
-            return {
-                ...state.count,
-                count: state.count + 1,
-            };
         case actionTypes.FETCH_QUOTE_ON_BUTTON_CLICK:
             return {
                 ...state.quotes,
@@ -27,8 +22,25 @@ function reducer(state = initialState, action) {
 
         case actionTypes.LOADING_QUOTE:
             return {
-                ...state.quoteLoading,
+                ...state,
                 quoteLoading: action.payload,
+            };
+        case actionTypes.DELETE_QUOTE_ON_BUTTON_CLICK:
+            const quotes = state?.quotes;
+            const newQuotes = quotes.filter(quote => quote !== action.payload);
+
+            return {
+                ...state.quotes,
+                quotes: newQuotes,
+            };
+
+        case actionTypes.UPDATE_WORD_COUNT_ON_INPUT_CHANGE:
+            const filteredQuotes = state?.quotes.filter(quote => quote.match(/(\w+)/g).length >= action.payload);
+
+            return {
+                ...state,
+                inputCount: action.payload,
+                filteredQuotes,
             };
         default:
             return state;

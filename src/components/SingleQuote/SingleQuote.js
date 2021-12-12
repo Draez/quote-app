@@ -1,17 +1,15 @@
 import React from 'react'
 import { QuoteWrapper, QuoteButtonDelete } from '../QuoteList/styles'
+import { useSelector, useDispatch } from 'react-redux';
+import { deleteQuote } from './../../actions/actions';
 
-const deleteQuote = (quotes, id) => {
-    quotes.splice(id, 1);
-    console.log(quotes)
-    return quotes;
-}
+export const SingleQuote = ({ quote }) => {
+    const dispatch = useDispatch();
 
-export const SingleQuote = ({ quote, id, quotes }) => {
     return (
         <QuoteWrapper>
             <p>{quote}</p>
-            <QuoteButtonDelete onClick={() => deleteQuote(quotes, id)}>Delete</QuoteButtonDelete>
+            <QuoteButtonDelete onClick={() => dispatch(deleteQuote(quote))}>Delete</QuoteButtonDelete>
         </QuoteWrapper>
     )
 }
