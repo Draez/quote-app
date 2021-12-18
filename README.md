@@ -1,7 +1,10 @@
 # Getting Started with Create React App
 
-npm install
-npm start
+npm install -> npm start
+
+# Technologies used
+
+React, Redux, Saga, StyledComponents 
 
 # Quote app
 
