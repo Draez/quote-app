@@ -4,12 +4,8 @@
 import axios from 'axios';
 import { takeEvery, put } from 'redux-saga/effects';
 import {
-    actionTypes, fetchQuote, loadingQuote,
+    actionTypes, fetchQuote
 } from '../actions/actions';
-
-function* updateCounter() {
-    console.log("test");
-}
 
 /*
     Fetch new oneliner quote
@@ -23,6 +19,5 @@ function* fetchingQuoteSaga() {
 }
 
 export default function* rootSaga() {
-    yield takeEvery(actionTypes.UPDATE_COUNTER, updateCounter);
     yield takeEvery(actionTypes.FETCHING_QUOTE_ON_BUTTON_CLICK, fetchingQuoteSaga);
 }

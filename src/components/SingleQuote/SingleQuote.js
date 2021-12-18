@@ -1,6 +1,6 @@
 import React from 'react'
 import { QuoteWrapper, QuoteButtonDelete } from '../QuoteList/styles'
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { deleteQuote } from './../../actions/actions';
 
 export const SingleQuote = ({ quote }) => {
